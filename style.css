@@ -1,0 +1,138 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --bg-color: #f7f9f6;          /* Abu-abu super muda dengan tint hijau */
+    --card-bg: #ffffff;           /* Putih bersih untuk kontainer */
+    --primary-sage: #8fa89b;      /* Hijau Sage utama */
+    --primary-dark: #6b8275;      /* Hijau Sage tua untuk teks/tombol */
+    --earth-brown: #a89484;       /* Cokelat bumi kalem untuk aksen */
+    --text-main: #333d38;         /* Hitam pudar (charcoal) biar gak kaku */
+    --text-muted: #707a75;        /* Abu-abu hijau untuk teks sekunder */
+    --border-color: #e2e8e4;      /* Garis pembatas tipis yang lembut */
+    --radius: 12px;               /* Sudut melengkung modern */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- UTILITIES --- */
+.page-container {
+    width: 100%;
+    max-width: 480px; /* Ukuran pas ala aplikasi mobile/responsif */
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(143, 168, 155, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- LANDING / LOGIN PAGE --- */
+.login-card {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.login-card h1 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.login-card h1 span {
+    color: var(--earth-brown);
+    font-weight: 300;
+}
+
+.login-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary img {
+    width: 22px;
+    height: 22px;
+}
+
+.btn-primary:hover {
+    background-color: #f0f4f1;
+    border-color: var(--primary-sage);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #fff1f1;
+    color: #c94a4a;
+    border-color: #f5c2c2;
+}
+
+/* --- DASHBOARD HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+header h2 {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+}
+
+.dashboard-content {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+    padding: 40px 0;
+}
