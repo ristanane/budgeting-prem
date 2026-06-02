@@ -1,14 +1,20 @@
-/* --- RESET & VARIABLES --- */
+/* --- RESET & VARIABLES (Kombinasi Kontras Estetik) --- */
 :root {
-    --bg-color: #f7f9f6;          /* Abu-abu super muda dengan tint hijau */
-    --card-bg: #ffffff;           /* Putih bersih untuk kontainer */
-    --primary-sage: #8fa89b;      /* Hijau Sage utama */
-    --primary-dark: #6b8275;      /* Hijau Sage tua untuk teks/tombol */
-    --earth-brown: #a89484;       /* Cokelat bumi kalem untuk aksen */
-    --text-main: #333d38;         /* Hitam pudar (charcoal) biar gak kaku */
-    --text-muted: #707a75;        /* Abu-abu hijau untuk teks sekunder */
-    --border-color: #e2e8e4;      /* Garis pembatas tipis yang lembut */
-    --radius: 12px;               /* Sudut melengkung modern */
+    --bg-color: #f4f6f4;          /* Abu-abu terang dengan sedikit tint sage (lembut di mata) */
+    --card-bg: #ffffff;           /* Putih bersih untuk area konten utama */
+    
+    /* Palet Hijau (Identitas) */
+    --primary-sage: #8fa89b;      /* Hijau Sage untuk elemen dekoratif/aksen ringan */
+    --primary-dark: #3b4d43;      /* Hijau Moss Gelap untuk teks judul & elemen dominan */
+    
+    /* Palet Kontras Gelap (Teks & Navigasi) */
+    --text-main: #212724;         /* Charcoal Gelap (hampir hitam) untuk kontras teks utama */
+    --text-muted: #5c6661;        /* Abu-abu gelap untuk teks sekunder */
+    
+    /* Palet Aksen Bumi (Untuk elemen penting/perhatian) */
+    --earth-accent: #c48f76;      /* Terracotta hangat untuk tombol penting atau penanda */
+    --border-color: #dbe2de;      /* Garis pembatas abu-green yang tegas tapi tipis */
+    --radius: 12px;
 }
 
 * {
