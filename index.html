@@ -22,12 +22,89 @@
 
     <section id="dashboard-page" class="page-container hidden">
         <header>
-            <h2>Halo, Selamat Datang!</h2>
+            <div class="user-profile">
+                <h2>Saku<span>Pribadi</span></h2>
+                <p id="user-email">Halo, Pengguna!</p>
+            </div>
             <button id="btn-logout" class="btn-secondary">Keluar</button>
         </header>
 
+        <nav class="app-nav">
+            <button id="nav-dashboard" class="nav-link active">Dashboard</button>
+            <button id="nav-kategori" class="nav-link">Keluar Kategori</button>
+        </nav>
+
         <main class="dashboard-content">
-            <p>Wah, kamu berhasil masuk! Nanti dashboard budgeting-mu ada di sini.</p>
+            
+            <div id="sub-dashboard">
+                <div class="total-balance-card">
+                    <h3>Sisa Saldo Bulan Ini</h3>
+                    <p id="total-balance">Rp 0</p>
+                </div>
+
+                <div class="budget-section">
+                    <h3>Pantauan Anggaran</h3>
+                    <div id="budget-progress-list">
+                        <div class="progress-group">
+                            <div class="progress-labels">
+                                <span>Makan & Minum</span>
+                                <span>Rp 400.000 / Rp 1.500.000</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar bar-safe" style="width: 26%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Catat Transaksi Baru</h3>
+                    <form id="form-transaksi">
+                        <div class="input-group">
+                            <label>Nama Transaksi</label>
+                            <input type="text" id="tx-nama" placeholder="Contoh: Beli Kertas HVS" required>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Nominal (Rp)</label>
+                                <input type="number" id="tx-nominal" placeholder="50000" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Kategori</label>
+                                <select id="tx-kategori" required>
+                                    <option value="">-- Pilih Kategori --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-accent">Simpan Transaksi</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="sub-kategori" class="hidden">
+                <div class="form-section">
+                    <h3>Tambah Kategori Baru</h3>
+                    <form id="form-kategori">
+                        <div class="input-group">
+                            <label>Nama Kategori</label>
+                            <input type="text" id="kat-nama" placeholder="Contoh: Skincare, Bensin" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Batas Anggaran (Rp)</label>
+                            <input type="number" id="kat-limit" placeholder="500000" required>
+                        </div>
+                        <button type="submit" class="btn-accent">Tambah Kategori</button>
+                    </form>
+                </div>
+
+                <div class="list-section">
+                    <h3>Daftar Kategori Aktif</h3>
+                    <ul id="list-kategori-aktif">
+                        <li>Makan & Minum (Limit: Rp 1.500.000)</li>
+                    </ul>
+                </div>
+            </div>
+
         </main>
     </section>
 
