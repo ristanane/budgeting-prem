@@ -17,3 +17,23 @@ btnLogout.addEventListener('click', () => {
     dashboardPage.classList.add('hidden');
     loginPage.classList.remove('hidden');
 });
+
+// --- LOGIKA PERPINDAHAN TAB MENU INTERNAL ---
+const navDashboard = document.getElementById('nav-dashboard');
+const navKategori = document.getElementById('nav-kategori');
+const subDashboard = document.getElementById('sub-dashboard');
+const subKategori = document.getElementById('sub-kategori');
+
+navDashboard.addEventListener('click', () => {
+    navDashboard.classList.add('active');
+    navKategori.classList.remove('active');
+    subDashboard.classList.remove('hidden');
+    subKategori.classList.add('hidden');
+});
+
+navKategori.addEventListener('click', () => {
+    navKategori.classList.add('active');
+    navDashboard.classList.remove('active');
+    subKategori.classList.remove('hidden');
+    subDashboard.classList.add('hidden');
+});
