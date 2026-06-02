@@ -1,4 +1,33 @@
 // ==========================================
+// 0. KONFIGURASI GOOGLE OAUTH
+// ==========================================
+// Ganti teks di bawah ini dengan Client ID milikmu yang tadi
+const GOOGLE_CLIENT_ID = "1010936867972-l8jjq1e68vgi54nuvmnf222gpb92kvgb.apps.googleusercontent.com";
+let tokenClient;
+let accessToken = null;
+
+// Fungsi yang otomatis berjalan saat halaman web selesai dimuat
+window.onload = function () {
+    // Menginisialisasi token client untuk meminta izin akses Google Drive & Sheets
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: GOOGLE_CLIENT_ID,
+        scope: 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/spreadsheets',
+        callback: (tokenResponse) => {
+            if (tokenResponse && tokenResponse.access_token) {
+                accessToken = tokenResponse.access_token;
+                console.log("Akses Token Berhasil Didapat:", accessToken);
+                
+                // Setelah sukses dapat token, langsung pindah halaman ke dashboard
+                loginPage.classList.add('hidden');
+                dashboardPage.classList.remove('hidden');
+                
+                // Kita jalankan fungsi render tampilan lokal kita kemarin
+                updateAplikasi();
+            }
+        },
+    });
+};
+// ==========================================
 // 1. AMBIL SEMUA ELEMEN HTML YANG DIBUTUHKAN
 // ==========================================
 const btnLoginGoogle = document.getElementById('btn-login-google');
@@ -132,10 +161,11 @@ formTransaksi.addEventListener('submit', (e) => {
 });
 
 // Simulasi Perpindahan Halaman Login/Logout
+// Mengubah fungsi klik tombol login agar memicu pop-up Google asli
 btnLoginGoogle.addEventListener('click', () => {
-    loginPage.classList.add('hidden');
-    dashboardPage.classList.remove('hidden');
-    updateAplikasi(); // Jalankan fungsi render saat pertama masuk app
+    // Meminta token akses / memunculkan pop-up pilihan akun Google
+    // prompt: 'select_account' berguna agar user bisa ganti-ganti akun kalau mau
+    tokenClient.requestAccessToken({ prompt: 'select_account' });
 });
 
 btnLogout.addEventListener('click', () => {
