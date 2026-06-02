@@ -96,7 +96,8 @@ formKategori.addEventListener('submit', (e) => {
     e.preventDefault(); // Mencegah halaman reload
     
     const namaBaru = document.getElementById('kat-nama').value;
-    const limitBaru = parseInt(document.getElementById('kat-limit').value);
+    const limitRaw = document.getElementById('kat-limit').value;
+    const limitBaru = parseInt(navigatorRaw.replace(/\./g, '')) || 0;
 
     // Masukkan data baru ke dalam array database simulasi
     daftarKategori.push({
@@ -117,7 +118,8 @@ formTransaksi.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const kategoriDipilih = txKategoriDropdown.value;
-    const nominalInput = parseInt(document.getElementById('tx-nominal').value);
+    const nominalRaw = document.getElementById('tx-nominal').value;
+    const nominalInput = parseInt(nominalRaw.replace(/\./g, '')) || 0;
 
     // Cari kategori yang cocok di dalam array, lalu tambahkan nominal terpakainya
     const kategoriData = daftarKategori.find(kat => kat.nama === kategoriDipilih);
@@ -155,3 +157,37 @@ navKategori.addEventListener('click', () => {
     subKategori.classList.remove('hidden');
     subDashboard.classList.add('hidden');
 });
+
+// ==========================================
+// 5. FUNGSI OTOMATIS FORMAT RUPIAH SAAT KETIK
+// ==========================================
+
+function formatRupiahKetik(elemen) {
+    elemen.addEventListener('input', function(e) {
+        // 1. Ambil hanya angka saja dari inputan, buang huruf/simbol lain
+        let angka = this.value.replace(/[^,\d]/g, '').toString();
+        
+        // 2. Format angkanya jadi ada titik ribuan
+        let split   = angka.split(',');
+        let sisa    = split[0].length % 3;
+        let rupiah  = split[0].substr(0, sisa);
+        let ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            let separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        
+        // 3. Masukkan kembali hasil format ke dalam inputan
+        this.value = rupiah;
+    });
+}
+
+// Pasang fungsi format ke dua input nominal kita
+const inputTxNominal = document.getElementById('tx-nominal');
+const inputKatLimit = document.getElementById('kat-limit');
+
+formatRupiahKetik(inputTxNominal);
+formatRupiahKetik(inputKatLimit);
